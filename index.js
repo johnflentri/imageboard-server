@@ -1,9 +1,14 @@
 const express = require("express")
 const app = express()
-const imageRouter = require("./image/router")
 
-const db = require("./db")
-const Image = require("./image/model")
+const corsMiddleware = require("cors")
+
+app.use(corsMiddleware())
+
+// const parserMiddleware = express.json()
+app.use(express.json())
+
+const imageRouter = require("./image/router")
 const port = process.env.PORT || 4000
 
 app.use(imageRouter)
